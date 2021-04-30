@@ -16,24 +16,24 @@ import {
   DarkTheme as NavigationDarkTheme,
 } from '@react-navigation/native';
 
-import Navigator from 'app/navigation';
-import configureStore from 'app/store';
-import { IThemeState } from 'app/models/reducers/theme';
+import Navigator from './navigation';
+import configureStore from './store';
+import { IThemeState } from './models/reducers/theme';
 
 const PaperThemeDefault = {
   ...PaperDefaultTheme,
   colors: {
     ...PaperDefaultTheme.colors,
-    primary: '#3498db'
-  }
+    primary: '#3498db',
+  },
 };
 
 const PaperThemeDark = {
   ...PaperDarkTheme,
   colors: {
     ...PaperDarkTheme.colors,
-    primary: '#3498db'
-  }
+    primary: '#3498db',
+  },
 };
 
 const CombinedDefaultTheme = {
@@ -48,8 +48,8 @@ const CombinedDarkTheme = {
     ...NavigationDarkTheme.colors,
     background: '#303030',
     card: '#222222',
-    text: '#ffffff'
-  }
+    text: '#ffffff',
+  },
 };
 
 const { persistor, store } = configureStore();

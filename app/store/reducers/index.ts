@@ -1,7 +1,8 @@
 /*
  * combines all th existing reducers
  */
-import * as loadingReducer from './loadingReducer';
-import * as loginReducer from './loginReducer';
+import * as superHeroReducer from './superHeroReducer';
 import * as themeReducer from './themeReducer';
-export default Object.assign(loginReducer, loadingReducer, themeReducer);
+import * as loadingReducer from './loadingReducer';
+
+export default Object.assign(superHeroReducer, loadingReducer, themeReducer);
