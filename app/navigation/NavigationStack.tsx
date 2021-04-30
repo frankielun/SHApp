@@ -9,7 +9,6 @@ import Home from '../screens/Home';
 
 import ThemeController from '../components/ThemeController';
 import { StatusBar } from 'react-native';
-import { ILoginState } from '../models/reducers/login';
 
 const Stack = createStackNavigator();
 const HomeStack = createStackNavigator();
