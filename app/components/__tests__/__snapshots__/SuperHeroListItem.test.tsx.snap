@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  accessible={true}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "opacity": 1,
+      "position": "relative",
+      "width": 250,
+    }
+  }
+>
+  <View
+    style={
+      Array [
+        Object {
+          "overflow": "hidden",
+        },
+        Object {
+          "height": 170,
+          "width": 246,
+        },
+      ]
+    }
+  >
+    <FastImageView
+      resizeMode="contain"
+      source={
+        Object {
+          "priority": "normal",
+          "uri": undefined,
+        }
+      }
+      style={
+        Object {
+          "bottom": 0,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    />
+  </View>
+  <Text
+    numberOfLines={2}
+    style={
+      Object {
+        "backgroundColor": "black",
+        "bottom": 20,
+        "color": "white",
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "left": 0,
+        "position": "absolute",
+      }
+    }
+  />
+</View>
+`;
