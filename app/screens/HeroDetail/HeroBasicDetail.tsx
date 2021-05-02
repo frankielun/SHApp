@@ -14,7 +14,7 @@ interface IProps {
 
 const HeroBasicDetail = ({ item }: IProps) => {
   const favoriteList: ISuperHeros[] = useSelector(state => state.superHeroReducers.favoriteList);
-  const isSaved = favoriteList.find(item => item.id === item.id);
+  const isSaved = !!favoriteList.find(fav => fav.id === item.id);
   const dispatch = useDispatch();
 
   return (
