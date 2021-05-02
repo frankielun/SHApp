@@ -6,7 +6,7 @@ import { ISuperHeros } from '../@types/index';
 const { width: screenWidth } = Dimensions.get('window');
 interface IProps {
   item: ISuperHeros;
-  onPress: ((event: GestureResponderEvent) => void) | undefined;
+  onPress?: ((event: GestureResponderEvent) => void) | undefined;
 }
 
 const imageWidth = screenWidth / 3;
@@ -14,17 +14,17 @@ const imageWidth = screenWidth / 3;
 const SuperHeroListItem = ({ item, onPress } :IProps) => {
   
   return (
-    <TouchableOpacity style={styles.container} onPress={onPress}>
+    <TouchableOpacity style={styles.container} onPress={onPress ? onPress : () => {}}>
       <FastImage
         style={{ width: imageWidth - 4, height: 170 }}
         source={{
-            uri: item.image?.url,
+            uri: item?.image?.url,
             priority: FastImage.priority.normal,
         }}
         resizeMode={FastImage.resizeMode.contain}
       />
       <Text style={styles.title} numberOfLines={2}>
-        {item.name}
+        {item?.name}
       </Text>
     </TouchableOpacity>
   );

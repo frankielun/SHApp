@@ -1,28 +1,28 @@
 import React from 'react';
 import { TouchableOpacity, Dimensions, Text, StyleSheet, Platform, GestureResponderEvent } from 'react-native';
 import { ParallaxImage, AdditionalParallaxProps } from 'react-native-snap-carousel';
-import { ISuperHeros } from '../@types';
+import { ISuperHeros } from '../../@types';
 
 const { width: screenWidth } = Dimensions.get('window');
 
 interface IProps {
   item: ISuperHeros;
-  parallaxProps: AdditionalParallaxProps;
+  parallaxProps?: AdditionalParallaxProps;
   onPress: ((event: GestureResponderEvent) => void) | undefined;
 }
 
-const CarouselItem: React.FC<any> = ({ item, parallaxProps, onPress }: IProps) => {
+const CarouselItem = ({ item, parallaxProps, onPress }: IProps) => {
   return (
     <TouchableOpacity style={styles.item} onPress={onPress}>
         <ParallaxImage
-          source={{ uri: item.image?.url }}
+          source={{ uri: item?.image?.url }}
           containerStyle={styles.imageContainer}
           style={styles.image}
           parallaxFactor={0.4}
           {...parallaxProps}
         />
         <Text style={styles.title} numberOfLines={2}>
-          {item.name}
+          {item?.name}
         </Text>
       </TouchableOpacity>
   );

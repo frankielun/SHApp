@@ -1,4 +1,5 @@
 export interface ISuperHeros {
+    id: string;
     image: {
       url: string;
     };

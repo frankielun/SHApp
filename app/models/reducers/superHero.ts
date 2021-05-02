@@ -1,4 +1,6 @@
+import { ISuperHeros } from '../../@types/index';
 export interface ISuperHeroReducerType {
-  superHeros: any[];
-  searchResult: any[];
+  superHeros: ISuperHeros[];
+  searchResult: ISuperHeros[];
+  favoriteList: ISuperHeros[];
 }

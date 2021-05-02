@@ -11,7 +11,7 @@ export default function* superheroRequestSaga(action: any) {
   }
   const responses = yield all(
     ids.map(item => call(requestSuperHero, `${item}`)),
-  );
+    );
   const superHeros = responses.map(item => item.data);
   if (superHeros.length > 0) {
     yield put({

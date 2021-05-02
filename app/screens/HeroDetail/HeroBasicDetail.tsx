@@ -1,9 +1,11 @@
 import React from 'react';
-import { View, Dimensions } from 'react-native';
+import { View, Dimensions, StyleSheet } from 'react-native';
 import FastImage from 'react-native-fast-image';
-import { StyleSheet } from 'react-native';
+import { Headline, Paragraph, Button } from 'react-native-paper';
+import { useSelector, useDispatch } from 'react-redux';
+import * as superheroActions from '../../store/actions/superheroActions';
 import { ISuperHeros } from '../../@types/index';
-import { Caption, Headline, Paragraph } from 'react-native-paper';
+import { SaveButton } from '../../components';
 
 const { width: screenWidth } = Dimensions.get('window');
 interface IProps {
@@ -11,6 +13,10 @@ interface IProps {
 }
 
 const HeroBasicDetail = ({ item }: IProps) => {
+  const favoriteList: ISuperHeros[] = useSelector(state => state.superHeroReducers.favoriteList);
+  const isSaved = favoriteList.find(item => item.id === item.id);
+  const dispatch = useDispatch();
+
   return (
     <View style={styles.container}>
       <View style={styles.leftContent}>
@@ -27,6 +33,7 @@ const HeroBasicDetail = ({ item }: IProps) => {
         <Headline>{item.name}</Headline>
         <Paragraph numberOfLines={4}>First Appearance: {item.biography['first-appearance']}</Paragraph>
         <Paragraph numberOfLines={1}>Publisher: {item.biography.publisher}</Paragraph>
+        <SaveButton isSaved={isSaved} onSave={() => dispatch(superheroActions.saveSuperHero(item))} onUnSave={() => dispatch(superheroActions.unSaveSuperHero(item))} />
       </View>
     </View>
   );

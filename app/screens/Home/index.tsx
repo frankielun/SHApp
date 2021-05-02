@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Title } from 'react-native-paper';
 import * as superheroActions from '../../store/actions/superheroActions';
 import styles from './styles';
-import CarouselItem from '../../components/CarouselItem';
+import CarouselItem from './CarouselItem';
 import { SuperHeroListItem } from '../../components';
 import { ISuperHeros } from '../../@types';
 import NavigationService from '../../navigation/NavigationService';
@@ -40,7 +40,7 @@ const Home: React.FC = () => {
     parallaxProps?: AdditionalParallaxProps | undefined,
   ) => {
     return (
-      <CarouselItem key={`carousel_${index}`} item={item} parallaxProps={parallaxProps} onPress={() => {
+      <CarouselItem key={`carousel_${index}`} item={item} parallaxProps={parallaxProps ? parallaxProps: null} onPress={() => {
         NavigationService.navigate('HeroDetail', { item });
       }} />
     );
