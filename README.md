@@ -11,4 +11,4 @@ By using https://www.superheroapi.com/ to buiid a React-Native Mobile app. In or
 - typescript
 - jest
 
-Demo file: demo.mov
+Demo file: https://github.com/frankielun/SHApp/blob/main/demo.mov
