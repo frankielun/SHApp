@@ -1,29 +1,49 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Dimensions, Text, TouchableOpacity, GestureResponderEvent } from 'react-native';
 import FastImage from 'react-native-fast-image'
 import { ISuperHeros } from '../@types/index';
 
-const SuperHeroListItem: React.FC<ISuperHeros> = (item) => {
+const { width: screenWidth } = Dimensions.get('window');
+interface IProps {
+  item: ISuperHeros;
+  onPress: ((event: GestureResponderEvent) => void) | undefined;
+}
+
+const imageWidth = screenWidth / 3;
+
+const SuperHeroListItem = ({ item, onPress } :IProps) => {
+  
   return (
-    <View style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onPress}>
       <FastImage
-        style={{ width: 80, height: 200 }}
+        style={{ width: imageWidth - 4, height: 170 }}
         source={{
             uri: item.image?.url,
             priority: FastImage.priority.normal,
         }}
         resizeMode={FastImage.resizeMode.contain}
       />
-    </View>
+      <Text style={styles.title} numberOfLines={2}>
+        {item.name}
+      </Text>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  }
+    position: 'relative',
+    width: imageWidth
+  },
+  title: {
+    position: 'absolute',
+    bottom: 20,
+    left: 0,
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+    backgroundColor: 'black',
+  },
 });
 
 export default SuperHeroListItem;

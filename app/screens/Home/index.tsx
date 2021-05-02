@@ -11,8 +11,10 @@ import styles from './styles';
 import CarouselItem from '../../components/CarouselItem';
 import { SuperHeroListItem } from '../../components';
 import { ISuperHeros } from '../../@types';
+import NavigationService from '../../navigation/NavigationService';
 
 const { width: screenWidth } = Dimensions.get('window');
+
 
 const Home: React.FC = () => {
   const superHeros: ISuperHeros[] = useSelector(state => state.superHeroReducers.superHeros);
@@ -30,6 +32,7 @@ const Home: React.FC = () => {
   const renderItem = (
     {
       item,
+      index
     }: {
       item: ISuperHeros;
       index: number;
@@ -37,7 +40,9 @@ const Home: React.FC = () => {
     parallaxProps?: AdditionalParallaxProps | undefined,
   ) => {
     return (
-      <CarouselItem item={item} parallaxProps={parallaxProps} />
+      <CarouselItem key={`carousel_${index}`} item={item} parallaxProps={parallaxProps} onPress={() => {
+        NavigationService.navigate('HeroDetail', { item });
+      }} />
     );
   };
 
@@ -57,9 +62,13 @@ const Home: React.FC = () => {
           hasParallaxImages={true}
         />
         <Title style={styles.title}>Other Heros</Title>
-        {
-          otherHeros.map(item => <SuperHeroListItem item={item} />)
-        }
+        <View style={styles.imageContainer}>
+          {
+            otherHeros.map((item, index) => <SuperHeroListItem key={`otherHeros_${index}`} item={item} onPress={() => {
+              NavigationService.navigate('HeroDetail', { item });
+            }}/>)
+          }
+        </View>
       </ScrollView>
     </View>
   );

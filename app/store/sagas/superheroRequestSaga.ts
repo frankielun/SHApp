@@ -6,7 +6,7 @@ import * as types from '../../store/actions/types';
 export default function* superheroRequestSaga(action: any) {
   //how to call api
   const ids = [];
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 20; i++) {
     ids.push(action.page * i);
   }
   const responses = yield all(

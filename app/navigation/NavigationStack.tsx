@@ -6,6 +6,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { navigationRef } from './NavigationService';
 
 import Home from '../screens/Home';
+import HeroDetail from '../screens/HeroDetail';
 
 import ThemeController from '../components/ThemeController';
 import { StatusBar } from 'react-native';
@@ -24,6 +25,18 @@ const HomeNavigator = () => (
       component={Home}
       options={{
         title: 'SHApp',
+        headerTitleStyle: {
+          fontWeight: 'bold',
+        },
+        headerRight: () => <ThemeController />,
+      }}
+    />
+
+    <Stack.Screen
+      name="HeroDetail"
+      component={HeroDetail}
+      options={{
+        title: 'Hero Detail',
         headerTitleStyle: {
           fontWeight: 'bold',
         },

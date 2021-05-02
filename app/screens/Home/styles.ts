@@ -15,6 +15,12 @@ const styles = StyleSheet.create({
     marginVertical: 8,
     fontSize: 24,
     fontWeight: 'bold'
+  },
+  imageContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between'
   }
 });
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Dimensions, Text, StyleSheet, Platform } from 'react-native';
+import { TouchableOpacity, Dimensions, Text, StyleSheet, Platform, GestureResponderEvent } from 'react-native';
 import { ParallaxImage, AdditionalParallaxProps } from 'react-native-snap-carousel';
 import { ISuperHeros } from '../@types';
 
@@ -7,12 +7,13 @@ const { width: screenWidth } = Dimensions.get('window');
 
 interface IProps {
   item: ISuperHeros;
-  parallaxProps: AdditionalParallaxProps
+  parallaxProps: AdditionalParallaxProps;
+  onPress: ((event: GestureResponderEvent) => void) | undefined;
 }
 
-const CarouselItem: React.FC<any> = ({ item, parallaxProps }: IProps) => {
+const CarouselItem: React.FC<any> = ({ item, parallaxProps, onPress }: IProps) => {
   return (
-    <View style={styles.item}>
+    <TouchableOpacity style={styles.item} onPress={onPress}>
         <ParallaxImage
           source={{ uri: item.image?.url }}
           containerStyle={styles.imageContainer}
@@ -23,7 +24,7 @@ const CarouselItem: React.FC<any> = ({ item, parallaxProps }: IProps) => {
         <Text style={styles.title} numberOfLines={2}>
           {item.name}
         </Text>
-      </View>
+      </TouchableOpacity>
   );
 };
 
